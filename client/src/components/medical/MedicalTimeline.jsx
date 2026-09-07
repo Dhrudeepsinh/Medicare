@@ -1,4 +1,4 @@
-import { Plus, Pencil, FileText, TestTube, Calendar, Activity } from 'lucide-react';
+import { Plus, Pencil, FileText, TestTube, Calendar, Activity, MapPin } from 'lucide-react';
 import { formatDate } from '../../utils/formatters';
 import StatusBadge from '../ui/StatusBadge';
 
@@ -94,6 +94,15 @@ export default function MedicalTimeline({ records, onAddRecord, onEditRecord }) 
                           </h4>
                           {record.diagnosis && record.disease && record.disease !== record.diagnosis && (
                             <p className="text-sm text-gray-600 mt-0.5">{record.diagnosis}</p>
+                          )}
+                          {record.hospitalName && (
+                            <div className="flex items-center gap-1.5 mt-1.5">
+                              <MapPin size={12} className="text-blue-400 flex-shrink-0" />
+                              <span className="text-xs text-blue-600 font-medium">
+                                Diagnosed at&nbsp;
+                                <span className="text-blue-700">{record.hospitalName}</span>
+                              </span>
+                            </div>
                           )}
                         </div>
 

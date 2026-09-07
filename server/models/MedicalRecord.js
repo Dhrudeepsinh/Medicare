@@ -59,6 +59,11 @@ const MedicalRecordSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    hospitalName: {
+      type: String,
+      trim: true,
+      maxlength: [200, 'Hospital name cannot exceed 200 characters'],
+    },
     diseaseStatus: {
       type: String,
       enum: ['Active', 'Resolved', 'Chronic', 'In Treatment', 'Monitoring'],

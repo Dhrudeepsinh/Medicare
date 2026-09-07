@@ -20,6 +20,7 @@ export default function MedicalRecordForm({ patientId, record, onSuccess, onCanc
       symptoms: record.symptoms?.join(', ') || '',
       diagnosis: record.diagnosis || '',
       disease: record.disease || '',
+      hospitalName: record.hospitalName || '',
       diseaseStatus: record.diseaseStatus || 'Active',
       infectionStatus: record.infectionStatus || 'Unknown',
       infectionType: record.infectionType || '',
@@ -57,6 +58,7 @@ export default function MedicalRecordForm({ patientId, record, onSuccess, onCanc
         symptoms: raw.symptoms ? raw.symptoms.split(',').map((s) => s.trim()).filter(Boolean) : [],
         diagnosis: raw.diagnosis,
         disease: raw.disease,
+        hospitalName: raw.hospitalName || undefined,
         diseaseStatus: raw.diseaseStatus,
         infectionStatus: raw.infectionStatus,
         infectionType: raw.infectionType,
@@ -123,6 +125,19 @@ export default function MedicalRecordForm({ patientId, record, onSuccess, onCanc
             <select {...register('diseaseStatus')} className="input-field">
               {DISEASE_STATUSES.map((s) => <option key={s}>{s}</option>)}
             </select>
+          </div>
+          <div className="sm:col-span-2">
+            <label className="label">
+              Diagnosed / Detected At (Hospital / Clinic Name)
+            </label>
+            <input
+              {...register('hospitalName')}
+              placeholder="e.g. City Medical Center, Apollo Hospital..."
+              className="input-field"
+            />
+            <p className="text-xs text-gray-400 mt-1">
+              Name of the hospital or clinic where this disease was diagnosed or detected.
+            </p>
           </div>
         </div>
       </section>

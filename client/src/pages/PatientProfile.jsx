@@ -161,6 +161,14 @@ export default function PatientProfile() {
                 <p className="text-sm text-gray-700">{latestRecord.infectionType}</p>
               </div>
             )}
+            {latestRecord.hospitalName && (
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-1">Diagnosed At</p>
+                <p className="text-sm font-medium text-blue-700 flex items-center gap-1">
+                  📍 {latestRecord.hospitalName}
+                </p>
+              </div>
+            )}
             {latestRecord.followUpDate && (
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-1">Follow-up</p>
@@ -426,6 +434,11 @@ function NotesTab({ records }) {
             <div>
               <h4 className="font-semibold text-gray-900 text-sm">{r.disease || r.diagnosis || 'Visit'}</h4>
               <p className="text-xs text-gray-500">{formatDate(r.visitDate)}</p>
+              {r.hospitalName && (
+                <p className="text-xs text-blue-600 mt-0.5 flex items-center gap-1">
+                  📍 Diagnosed at <span className="font-medium">{r.hospitalName}</span>
+                </p>
+              )}
             </div>
             <StatusBadge status={r.diseaseStatus} />
           </div>
