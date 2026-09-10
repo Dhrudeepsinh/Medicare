@@ -100,7 +100,3 @@ npm run dev
 | `npm run install-all` | Install all dependencies             |
 
 ---
-
-## License
-
-MIT
